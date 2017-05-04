@@ -1,0 +1,31 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core"
+         xmlns:f="/lib/form">
+
+    <f:entry title="${%tag.name}" field="tagName">
+        <f:textbox/>
+    </f:entry>
+
+    <f:block>
+        <table>
+            <tr>
+                <td>${%status.to.publish}</td>
+                <td>
+                    <f:checkbox title="${%success}" name="discardSuccess" checked="${instance.discardSuccess}"/>
+                </td>
+                <td>
+                    <f:checkbox title="${%failure}" name="discardFailure" checked="${instance.discardFailure}"/>
+                </td>
+                <td>
+                    <f:checkbox title="${%unstable}" name="discardUnstable" checked="${instance.discardUnstable}"/>
+                </td>
+                <td>
+                    <f:checkbox title="${%not.built}" name="discardNotBuilt" checked="${instance.discardNotBuilt}"/>
+                </td>
+                <td>
+                    <f:checkbox title="${%aborted}" name="discardAborted" checked="${instance.discardAborted}"/>
+                </td>
+            </tr>
+        </table>
+    </f:block>
+</j:jelly>

@@ -1,0 +1,48 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core"
+         xmlns:st="jelly:stapler"
+         xmlns:d="jelly:define"
+         xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson"
+         xmlns:f="/lib/form">
+    <!--
+      This jelly script is used for per-project configuration.
+
+      See global.jelly for a general discussion about jelly script.
+    -->
+
+    <!--
+      Creates a text field that shows the value of the "name" property.
+      When submitted, it will be passed to the corresponding constructor parameter.
+    -->
+    <f:entry title="${%my.version.title}" field="myVersion">
+        <f:textbox value="${it.myVersion}"/>
+    </f:entry>
+    <f:entry title="${%my.messages.title}">
+        <f:repeatable field="myMessages" minimum="1" noAddButton="true">
+            <table width="100%">
+                <f:entry title="${%my.message.title}"  field="value" >
+                    <f:textarea />
+                </f:entry>
+                <f:entry>
+                    <div align="right">
+                        <input type="button" value="Add Message..." class="repeatable-add show-if-last"></input>
+                        <input type="button" value="Delete Message..." class="repeatable-delete"></input>
+                    </div>
+                </f:entry>
+            </table>
+        </f:repeatable>
+    </f:entry>
+    <f:advanced>
+        <f:entry title="${%target.name.title}" field="myTargetName">
+            <f:textbox value="${it.myTargetName}"/>
+        </f:entry>
+        <f:entry title="${%show.workspace.info.title}" field="showBuildInfo">
+            <f:checkbox default="true" value="${it.showBuildInfo}"/>
+        </f:entry>
+        <f:entry title="${%show.plugin.info.title}" field="showPluginInfo">
+            <f:checkbox default="true" value="${it.showPluginInfo}"/>
+        </f:entry>
+    </f:advanced>
+
+</j:jelly>
